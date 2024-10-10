@@ -3,6 +3,7 @@ package umpisa.restaurant.reservation.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import umpisa.restaurant.reservation.model.ReservationDTO;
 import umpisa.restaurant.reservation.services.ReservationService;
@@ -25,7 +26,7 @@ public class ReservationController {
     }
 
     @PostMapping(RESERVATION_PATH)
-    public ResponseEntity<String> createReservation(@RequestBody ReservationDTO reservationDTO) {
+    public ResponseEntity<String> createReservation(@Validated @RequestBody ReservationDTO reservationDTO) {
 
 
         ReservationDTO savedReservationDTO = reservationService.saveNewReservation(reservationDTO);
@@ -53,7 +54,7 @@ public class ReservationController {
 
     @PutMapping(RESERVATION_PATH_ID)
     public ResponseEntity updateReservationById(@PathVariable("reservationId") Long reservationId,
-                                                @RequestBody ReservationDTO reservationDTO) {
+                                                @Validated @RequestBody ReservationDTO reservationDTO) {
 
         reservationService.updateReservationById(reservationId, reservationDTO);
 

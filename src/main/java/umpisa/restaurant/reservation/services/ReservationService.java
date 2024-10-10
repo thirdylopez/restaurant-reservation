@@ -10,7 +10,7 @@ public interface ReservationService {
 
     ReservationDTO saveNewReservation(ReservationDTO reservationDTO);
 
-    void updateReservationById(Long reservationId, ReservationDTO reservationDTO);
+    ReservationDTO updateReservationById(Long reservationId, ReservationDTO reservationDTO);
 
     void cancelReservation(Long reservationId);
 }
